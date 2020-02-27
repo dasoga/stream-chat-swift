@@ -48,11 +48,15 @@ public struct BaseURL: CustomStringConvertible {
 extension BaseURL {
     /// A server location.
     public enum ServerLocation: String {
-        /// An US-East.
+        /// US-East.
         case usEast = "https://chat-us-east-1.stream-io-api.com/"
-        /// A proxy server.
+        /// Dublin.
+        case dublin = "https://chat-dublin-1.stream-io-api.com/"
+        /// US East proxy..
         case proxyEast = "https://chat-proxy-us-east.stream-io-api.com/"
-        /// A staging server.
+        /// Dublin proxy.
+        case proxyDublin = "https://chat-proxy-dublin.stream-io-api.com/"
+        /// Staging.
         case staging = "https://chat-us-east-staging.stream-io-api.com/"
     }
 }
