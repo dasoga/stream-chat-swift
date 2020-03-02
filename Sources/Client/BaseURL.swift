@@ -12,6 +12,9 @@ import Foundation
 public struct BaseURL: CustomStringConvertible {
     static let placeholderURL = URL(string: "https://getstream.io")!
     
+    public static let usEast = BaseURL(serverLocation: .usEast)
+    public static let dublin = BaseURL(serverLocation: .dublin)
+    
     public let baseURL: URL
     public let wsURL: URL
     
@@ -19,14 +22,14 @@ public struct BaseURL: CustomStringConvertible {
     
     /// Create a base URL.
     /// - Parameter serverLocation: a Stream Chat server location.
-    public init(serverLocation: ServerLocation = .usEast) {
-        self.init(customURL: URL(string: serverLocation.rawValue)!)
+    init(serverLocation: ServerLocation = .usEast) {
+        self.init(url: URL(string: serverLocation.rawValue)!)
     }
     
     /// Init with a custom server URL.
     ///
     /// - Parameter url: an URL
-    public init(customURL url: URL) {
+    init(url: URL) {
         var urlString = url.absoluteString
         
         // Remove a scheme prefix.
@@ -48,11 +51,9 @@ public struct BaseURL: CustomStringConvertible {
 extension BaseURL {
     /// A server location.
     public enum ServerLocation: String {
-        /// An US-East.
-        case usEast = "https://chat-us-east-1.stream-io-api.com/"
-        /// A proxy server.
-        case proxyEast = "https://chat-proxy-us-east.stream-io-api.com/"
-        /// A staging server.
-        case staging = "https://chat-us-east-staging.stream-io-api.com/"
+        /// US-East server.
+        case usEast = "https://chat-proxy-us-east.stream-io-api.com/"
+        /// Dublin server.
+        case dublin = "https://chat-proxy-dublin.stream-io-api.com/"
     }
 }
